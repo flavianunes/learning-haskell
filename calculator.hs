@@ -1,1 +1,0 @@
--- Basic calculator using Haskell by Flavia Nunes
