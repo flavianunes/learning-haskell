@@ -5,3 +5,12 @@ module Calculator where
 
     sub :: Double -> Double -> Double
     sub a b = a - b
+
+    mult :: Double -> Double -> Double
+    mult a b = a * b
+
+    half :: Double -> Double 
+    half a = a / 2
+
+    double :: Double -> Double
+    double a = a * 2
