@@ -1,5 +1,5 @@
 -- Fibonacci using Haskell by Flavia Nunes
-module Fib where
+module Aula2 where
     fib :: Integer -> Integer
     fib 0 = 0
     fib 1 = 1

@@ -23,3 +23,4 @@ module Aula7 where
     applyAll' [] x = x
     applyAll' (f : fs) = applyAll' fs . f
 
+    
