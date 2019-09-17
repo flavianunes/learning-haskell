@@ -118,11 +118,10 @@ Dadas as restrições acima, implemente a função:
 validTable :: Table -> Bool
 validTable xs = caseOne && caseTwo && caseThree
     where
+        sizeList = map length xs
         caseOne = True
-        caseTwo = length (xs) > 2
-        caseThree = and (map (== head xs) (tail xs))
-
-
+        caseTwo = length (xs) > 1
+        caseThree = and (map (== head sizeList) (tail sizeList))
 \end{code}
 
 que verifica se uma tabela fornecida como entrada é ou não válida. O seguinte
@@ -168,7 +167,9 @@ a) Implemente a função
 
 \begin{code}
 ppLine :: [Int] -> String
-ppLine = undefined
+ppLine [] =  "+"
+ppLine (x:xs) = putField x ++ ppLine xs
+    where putField x = "+" ++ (concat [t | i <- [1..x], let t = "-"]) 
 \end{code}
 
 que a partir de uma lista contendo os comprimentos de cada campo da tabela, imprime uma linha de cabeçalho.
