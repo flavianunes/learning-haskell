@@ -184,7 +184,7 @@ b) Implemente a função
 
 \begin{code}
 ppField :: Int -> String -> String
-ppField = undefined
+ppField x s = s ++ (concat [t | i<- [1..(x-length s)], let t = " "])
 \end{code}
 
 que a partir do comprimento de um campo, o valor do campo atual retorna o valor do campo devidamente formatado
@@ -200,7 +200,8 @@ c) Implemente a função
 
 \begin{code}
 ppRow :: [(Int, String)] -> String
-ppRow = undefined
+ppRow (xs) = concatMap ppRow' xs ++ "|"
+    where ppRow' (x, y) = "|" ++ ppField x y 
 \end{code}
 
 que a partir de uma lista de pares, cujo primeiro componente é o tamanho do campo e o segundo o valor do campo,
