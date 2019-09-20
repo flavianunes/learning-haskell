@@ -8,6 +8,8 @@ Setup inicial
 module Main where
 
 import Test.HUnit
+import Data.List
+import Data.Char
 \end{code}
 
 Introdução
@@ -119,7 +121,7 @@ validTable :: Table -> Bool
 validTable xs = caseOne && caseTwo && caseThree
     where
         sizeList = map length xs
-        caseOne =  head xs == ["Nome", "Sobrenome", "Idade"]
+        caseOne = True -- ou head xs == ["Nome", "Sobrenome", "Idade"], o que diferencia os nossos dos campos para os outros registros?
         caseTwo = length (xs) > 1
         caseThree = and (map (== head sizeList) (tail sizeList))
 \end{code}
@@ -216,7 +218,9 @@ d) Implemente a função
 
 \begin{code}
 fieldSizes :: Table -> [Int]
-fieldSizes = undefined
+fieldSizes table = map (fieldSizes') (transpose table) 
+    where 
+        fieldSizes' xs = maximum (map length xs)
 \end{code}
 
 que calcula o comprimento de cada campo de uma tabela. 
@@ -231,7 +235,14 @@ produzir a função
 
 \begin{code}
 ppTable :: Table -> String
-ppTable = undefined
+ppTable (x:xs) = ppLine sizes ++ "\n" ++ campos ++ "\n" ++ ppLine sizes ++ "\n" ++ registros (x:xs) ++ ppLine sizes
+    where 
+        sizes = fieldSizes (x:xs)
+        campos = ppRow (zip sizes ((map.map) toUpper x))
+        registros [] = []
+        registros (y:ys) = ppRow (zip sizes y) ++ "\n" ++ registros ys
+
+
 \end{code}
 
 que produz a versão legível de dados presentes em uma tabela textual.
@@ -249,5 +260,6 @@ tests = TestList [ parseTableTest
                  , ppRowTest
                  , fieldSizesTest]
 main :: IO ()
-main = runTestTT tests >> return ()
+main = runTestTT tests >> do putStrLn (ppTable tableRep) >> return () 
+
 \end{code}

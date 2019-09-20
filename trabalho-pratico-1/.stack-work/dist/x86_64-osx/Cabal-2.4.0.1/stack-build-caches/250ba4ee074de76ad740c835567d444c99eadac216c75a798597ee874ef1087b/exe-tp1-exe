@@ -1,20 +1,20 @@
-/Users/flavianunes/Documents/Ufop/learning-haskell/trabalho-pratico/tp1.cabal:
-  hash: cedee0e980c21029fa2522949fdd92d6aec76cb1828978b5ff71b22bb4a2dfe1
-  size: 1528
-  modtime: 1566307324
-/Users/flavianunes/Documents/Ufop/learning-haskell/trabalho-pratico/ChangeLog.md:
-  hash: b42ab75cc2dbb6f9cc1364f6bb1fee6f2691f84937bc3c9874730762ce579437
-  size: 43
-  modtime: 1566304822
-/Users/flavianunes/Documents/Ufop/learning-haskell/trabalho-pratico/app/Main.lhs:
-  hash: 2780a9646ae225087474fe849b02b6dabcd9ea84bd03bd2ace7194ad3624ca12
-  size: 6581
-  modtime: 1568734853
-/Users/flavianunes/Documents/Ufop/learning-haskell/trabalho-pratico/README.md:
-  hash: f551db56eacf7137dafa2bf10be5f60dfac2313923050ed7577254f813af8af7
-  size: 6
-  modtime: 1566304822
-/Users/flavianunes/Documents/Ufop/learning-haskell/trabalho-pratico/package.yaml:
+/Users/flavianunes/Documents/Ufop/learning-haskell/trabalho-pratico-1/package.yaml:
   hash: 27955cd23d0e0de59abbacd17c38445c08f642c66c69a6701b5a148452c0caf5
   size: 1164
-  modtime: 1566304882
+  modtime: 1568899801
+/Users/flavianunes/Documents/Ufop/learning-haskell/trabalho-pratico-1/README.md:
+  hash: f551db56eacf7137dafa2bf10be5f60dfac2313923050ed7577254f813af8af7
+  size: 6
+  modtime: 1568899800
+/Users/flavianunes/Documents/Ufop/learning-haskell/trabalho-pratico-1/tp1.cabal:
+  hash: cedee0e980c21029fa2522949fdd92d6aec76cb1828978b5ff71b22bb4a2dfe1
+  size: 1528
+  modtime: 1568899801
+/Users/flavianunes/Documents/Ufop/learning-haskell/trabalho-pratico-1/ChangeLog.md:
+  hash: b42ab75cc2dbb6f9cc1364f6bb1fee6f2691f84937bc3c9874730762ce579437
+  size: 43
+  modtime: 1568899800
+/Users/flavianunes/Documents/Ufop/learning-haskell/trabalho-pratico-1/app/Main.lhs:
+  hash: 3dfbf8d84e878cf8e22d3d3e24e5cbae0dadf68aa2c8eb183e451d9bd4ac2001
+  size: 7217
+  modtime: 1568982167
