@@ -121,7 +121,7 @@ validTable :: Table -> Bool
 validTable xs = caseOne && caseTwo && caseThree
     where
         sizeList = map length xs
-        caseOne = True -- ou head xs == ["Nome", "Sobrenome", "Idade"], o que diferencia os nossos dos campos para os outros registros?
+        caseOne = True -- ou head xs == ["Nome", "Sobrenome", "Idade"], já que não tem diferença do nome dos campos para os outros registros, como verificar se é um nome de campo para tabelas genéricas?
         caseTwo = length (xs) > 1
         caseThree = and (map (== head sizeList) (tail sizeList))
 \end{code}
