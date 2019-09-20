@@ -260,6 +260,6 @@ tests = TestList [ parseTableTest
                  , ppRowTest
                  , fieldSizesTest]
 main :: IO ()
-main = runTestTT tests >> do putStrLn (ppTable tableRep) >> return () 
+main = runTestTT tests >> do putStrLn (ppTable tableRep) 
 
 \end{code}
