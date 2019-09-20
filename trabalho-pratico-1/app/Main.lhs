@@ -235,7 +235,7 @@ produzir a função
 
 \begin{code}
 ppTable :: Table -> String
-ppTable (x:xs) = ppLine sizes ++ "\n" ++ campos ++ "\n" ++ ppLine sizes ++ "\n" ++ registros (x:xs) ++ ppLine sizes
+ppTable (x:xs) = ppLine sizes ++ "\n" ++ campos ++ "\n" ++ ppLine sizes ++ "\n" ++ registros xs ++ ppLine sizes
     where 
         sizes = fieldSizes (x:xs)
         campos = ppRow (zip sizes ((map.map) toUpper x))
