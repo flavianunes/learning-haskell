@@ -132,8 +132,11 @@ os elementos do topo da pilha. Implemente a função:
 
 \begin{code}
 stackOp :: (Int -> Int -> Int) -> VMState -> VMState
-stackOp op st
-  = undefined
+stackOp op state
+  = state { stack = ( op x y : tail(tail(stack state)))}
+  where
+    x = head (stack state)
+    y = head(tail(stack state))
 \end{code}
 
 que aplica a operação fornecida como primeiro parâmetro aos dois primeiros
@@ -148,7 +151,7 @@ um valor inteiro a este. Implemente a função:
 
 \begin{code}
 addPC :: Int -> VMState -> VMState
-addPC = undefined
+addPC x state = state { pc = x} 
 \end{code}
 
 que adiciona ao valor atual do contador de instrução a constante inteira
@@ -163,7 +166,11 @@ qnd n tiver duas coisas no topo da pilha é p aumentar o pc em 1
 
 \begin{code}
 condJump :: (Int -> Int -> Bool) -> Int -> VMState -> VMState
-condJump = undefined
+condJump cond n state = 
+    case (stack state) of 
+    (x : y : _) -> if cond x y then state { pc = pc state + n} else state { pc = pc state + 1}
+    _ -> state { pc = pc state + 1}
+
 \end{code}
 
 que a partir de um teste (igualdade ou desigualdade), um deslocamento e
@@ -176,7 +183,16 @@ execução de uma instrução da máquina pode ser implementada pela seguinte
 função:
 \begin{code}
 vmStep :: Instr -> VMState -> VMState
-vmStep = undefined
+vmStep (IPush x) state = push x state
+vmStep (IVar x) state = lookMemory x state
+vmStep (ISet x) state = setMemory x state
+vmStep (IAdd) state = stackOp (+) state
+vmStep (ISub) state = stackOp (-) state
+vmStep (IJump x) state = addPC x state
+vmStep (IJumpEq x) state = condJump (==) x state
+vmStep (IJumpNeq x) state = condJump (/=) x state
+vmStep (IHalt) state = state
+
 \end{code}
 que a partir de uma instrução a ser executada e do estado atual da máquina
 produz o um novo estado resultante.  
@@ -185,7 +201,12 @@ produz o um novo estado resultante.
 execução a ser executada. Implemente a função
 \begin{code}
 nextInstr :: [Instr] -> VMState -> Maybe Instr
-nextInstr = undefined
+nextInstr i state = pos (pc state) i
+  where
+    pos _ [] = Nothing
+    pos 0 (x : _) = if x == IHalt then Nothing
+                      else Just x
+    pos n (_ : xs) = pos n xs
 \end{code}
 
 que a partir de um programa e o estado atual da máquina, retorna
