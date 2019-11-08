@@ -6,6 +6,9 @@ Setup inicial
 
 \begin{code}
 module Small where
+
+import Data.List
+import Data.Maybe
 \end{code}
 
 Introdução
@@ -87,7 +90,7 @@ implemente a função:
 
 \begin{code}
 push :: Int -> VMState -> VMState
-push = undefined
+push n state = state { stack = stack state ++ [n]}
 \end{code}
 
 que altera o estado atual da máquina empilhando o inteiro fornecido como
@@ -99,7 +102,10 @@ pilha de execução. Implemente essa funcionalidade na função:
 
 \begin{code}
 lookMemory :: Name -> VMState -> VMState
-lookMemory = undefined
+lookMemory nome state = state { stack = (k:stack state)}
+  where
+    (_, k) = head (filter ((==nome) . fst) (memory state))
+
 \end{code}
 
 Note que essa função deve retornar o estado da máquina alterado após a
