@@ -102,9 +102,10 @@ pilha de execução. Implemente essa funcionalidade na função:
 
 \begin{code}
 lookMemory :: Name -> VMState -> VMState
-lookMemory nome state = state { stack = (k:stack state)}
-  where
-    (_, k) = head (filter ((==nome) . fst) (memory state))
+lookMemory nome state = 
+  if length(filter ((==nome) . fst) (memory state)) > 0
+    then state { stack = (snd(head (filter ((==nome) . fst) (memory state))):stack state)}
+    else state { stack = 0 : stack state}
 
 \end{code}
 
@@ -117,7 +118,10 @@ topo da pilha de execução. Implemente essa funcionalidade na função:
 
 \begin{code}
 setMemory :: Name -> VMState -> VMState
-setMemory = undefined
+setMemory nome state = 
+  if length(stack state) > 0
+    then state { memory = ((nome, head(stack state)) : memory state) }
+    else state { memory = ((nome, 0) : memory state)}
 \end{code}
 
 4 - As operações add e sub utilizam os dois elementos do topo da pilha
@@ -154,6 +158,8 @@ fornecida como primeiro parâmetro.
 dois elementos da pilha (caso esses existam). Novamente, vamos nos valer
 de funções de ordem superior para tratamento dos dois tipos de desvio.
 Implemente a função:
+
+qnd n tiver duas coisas no topo da pilha é p aumentar o pc em 1
 
 \begin{code}
 condJump :: (Int -> Int -> Bool) -> Int -> VMState -> VMState
